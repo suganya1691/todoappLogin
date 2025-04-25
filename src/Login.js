@@ -17,13 +17,7 @@ function Login(){
         })
         const data = await resp.json();
         console.log('Data', data);
-       /* if(username == 'sugan'){
-            setError(false);
-            navigate('/todolist');
-
-        }else{
-            setError(true);
-        }*/
+       localStorage.setItem('token',data.token);
 
     }
     
