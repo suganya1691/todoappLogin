@@ -5,9 +5,7 @@ import {jwtDecode} from 'jwt-decode';
 function PrivateRoute({children}){
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    if(!token){
-        <Navigate to='/login'></Navigate>
-    } 
+  
     try{
         const {exp} = jwtDecode(token);
          if(Date.now() > exp*1000){
@@ -19,7 +17,7 @@ function PrivateRoute({children}){
         localStorage.removeItem('token');
             return navigate('/login');
     }
-    
+    return token ? children : <Navigate to='/login'></Navigate>
    
 }
 
