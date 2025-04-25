@@ -6,7 +6,7 @@ function Login(){
     const [username,setUsername] = useState();
     const [password,setPassword] = useState();
     const[error,setError] = useState(false);
-    const name = 'sugan';
+    
     const navigate = useNavigate();
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -30,7 +30,7 @@ function Login(){
     return(
         <><h2>Login to App</h2>
         <div>
-            <p>{name}</p>
+           
         <form onSubmit={handleSubmit}>
         <label name='username'>Username</label>
         <input type='text' name='username' onChange = {(e) => setUsername(e.target.value)}></input>

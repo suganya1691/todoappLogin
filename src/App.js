@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './Login';
 import TodoList from './TodoList';
+import PrivateRoute from './PrivateRoute';
 import { BrowserRouter, Router, Routes, Route } from 'react-router';
 
 
@@ -9,12 +10,15 @@ function App() {
  
   return (
     <div className="App">
-      <h2>Login Page</h2>
+      <h2>Task Planner</h2>
       <BrowserRouter>
        
           <Routes>
-            <Route path='' element={<Login />}/>
-            <Route path='/todolist' element ={<TodoList />}></Route>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/todolist' element ={
+              <PrivateRoute>
+                <TodoList />
+              </PrivateRoute>}></Route>
           
           </Routes>
         
