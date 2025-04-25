@@ -6,7 +6,7 @@ function Login(){
     useEffect(()=>{
         const token = localStorage.getItem('token');
         if(token){
-            navigate('/todolist')
+            navigate('/dashboard')
         }
     },[])
     const [username,setUsername] = useState();

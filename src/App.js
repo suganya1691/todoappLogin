@@ -3,7 +3,9 @@ import './App.css';
 import Login from './Login';
 import TodoList from './TodoList';
 import PrivateRoute from './PrivateRoute';
-import { BrowserRouter, Router, Routes, Route , Navigate} from 'react-router';
+import Dashboard from './Dashboard';
+import UserDetails from './UserDetails';
+import { BrowserRouter, Router, Routes, Route , Navigate, Link} from 'react-router';
 
 
 function App() {
@@ -16,11 +18,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Navigate to ='/login'></Navigate>}/>
             <Route path='/login' element={<Login />}/>
-            <Route path='/todolist' element ={
-              <PrivateRoute>
-                <TodoList />
-              </PrivateRoute>}></Route>
-          
+            <Route path='/dashboard' element={ <PrivateRoute><Dashboard /> </PrivateRoute>}>
+              <Route path='/todolist' element ={ <TodoList /> }></Route>
+              <Route path='/userdetails' element={<UserDetails/>}></Route>
+            </Route>
+            <Route path='*' element = {<h1>Not Found</h1>}></Route>
           </Routes>
         
       </BrowserRouter>
