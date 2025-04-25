@@ -19,8 +19,8 @@ function App() {
             <Route path='/' element={<Navigate to ='/login'></Navigate>}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/dashboard' element={ <PrivateRoute><Dashboard /> </PrivateRoute>}>
-              <Route path='todolist' element ={ <TodoList /> }></Route>
-              <Route path='userdetails' element={<UserDetails/>}></Route>
+              <Route path='/dashboard/todolist' element ={ <TodoList /> }></Route>
+              <Route path='/dashboard/userdetails' element={<UserDetails/>}></Route>
             </Route>
             <Route path='*' element = {<h1>Not Found</h1>}></Route>
           </Routes>
