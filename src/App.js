@@ -3,7 +3,7 @@ import './App.css';
 import Login from './Login';
 import TodoList from './TodoList';
 import PrivateRoute from './PrivateRoute';
-import { BrowserRouter, Router, Routes, Route } from 'react-router';
+import { BrowserRouter, Router, Routes, Route , Navigate} from 'react-router';
 
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <BrowserRouter>
        
           <Routes>
+            <Route path='/' element={<Navigate to ='/login'></Navigate>}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/todolist' element ={
               <PrivateRoute>

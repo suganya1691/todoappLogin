@@ -6,6 +6,7 @@ function Login(){
     const [username,setUsername] = useState();
     const [password,setPassword] = useState();
     const[error,setError] = useState(false);
+    const [errmsg,setErrmsg] = useState();
     
     const navigate = useNavigate();
     const handleSubmit = async (e) =>{
@@ -20,6 +21,13 @@ function Login(){
         if(data.token){
             localStorage.setItem('token',data.token);
             navigate('/todolist');
+            //setError(false);
+        }else{
+            
+            setError(true);
+            setErrmsg(data.error);
+            setPassword('');
+            setUsername('');
         }
        
 
@@ -32,7 +40,7 @@ function Login(){
         <form onSubmit={handleSubmit}>
         <label name='username'>Username</label>
         <input type='text' name='username' onChange = {(e) => setUsername(e.target.value)}></input>
-        {error && <p>Invalid USername</p>}
+        {error && <p>{errmsg}</p>}
         <label name='username'>Password</label>
         <input type='password' name='password' onChange = {(e) => setPassword(e.target.value)}></input>
         <button type='submit'>Login</button>
