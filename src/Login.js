@@ -17,7 +17,11 @@ function Login(){
         })
         const data = await resp.json();
         console.log('Data', data);
-       localStorage.setItem('token',data.token);
+        if(data.token){
+            localStorage.setItem('token',data.token);
+            navigate('/todolist');
+        }
+       
 
     }
     
