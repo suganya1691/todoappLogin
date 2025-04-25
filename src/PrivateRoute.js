@@ -1,9 +1,24 @@
 import react from "react";
-import { Navigate } from "react-router";
+import { Navigate,useNavigate } from "react-router";
+import {jwtDecode} from 'jwt-decode';
 
 function PrivateRoute({children}){
+    const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    return token ? children : <Navigate to='/login'></Navigate>
+    if(!token) <Navigate to='/login'></Navigate>
+    try{
+        const {exp} = jwtDecode(token);
+         if(Date.now() > exp*1000){
+            console.log('Token Expired');
+            localStorage.removeItem('token');
+            return navigate('/login');
+        }
+    }catch(err){
+        localStorage.removeItem('token');
+            return navigate('/login');
+    }
+    
+   
 }
 
 export default PrivateRoute;
