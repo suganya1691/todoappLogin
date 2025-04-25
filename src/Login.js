@@ -21,7 +21,7 @@ function Login(){
         console.log('Data', data);
         if(data.token){
             localStorage.setItem('token',data.token);
-            navigate('/todolist');
+            navigate('/dashboard');
             //setError(false);
         }else{
             
