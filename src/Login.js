@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import {useNavigate} from "react-router";
 
 function Login(){
+    useEffect(()=>{
+        const token = localStorage.getItem('token');
+        if(token){
+            navigate('/todolist')
+        }
+    },[])
     const [username,setUsername] = useState();
     const [password,setPassword] = useState();
     const[error,setError] = useState(false);
